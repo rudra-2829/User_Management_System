@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AarohiWPFCore.Screens"
         mc:Ignorable="d"
-        Title="UserLoginScreen" Height="450" Width="800"
+        Title="UserLoginScreen" Height="450" Width="350"
         WindowState="Minimized"
         WindowStyle="None"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterOwner">
     <Grid>
-        <Border Width="600"
+        <Border Width="300"
                 Height="400"
                 BorderBrush="DarkGray"
                 BorderThickness="1"
@@ -29,23 +29,23 @@
                            VerticalAlignment="Top" 
                            Margin="0,30,0,0"/>
                 <TextBlock Text="Username:"
-                           Margin="200,50,0,0"
+                           Margin="80,50,0,0"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Top" />
                 <TextBox x:Name="txtUserName"
-                         Width="200"
+                         Width="150"
                          Height="20"
-                         Margin="200,0,0,0"
+                         Margin="80,0,0,0"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"/>
                 <TextBlock Text="Password:"
-                           Margin="200,20,0,0"
+                           Margin="80,20,0,0"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Top" />
                 <PasswordBox x:Name="txtPassword"
-                             Width="200"
+                             Width="150"
                              Height="20"
-                             Margin="200,0,0,0"
+                             Margin="80,0,0,0"
                              HorizontalAlignment="Left"
                              VerticalAlignment="Top" />
                 <Button Content="Login"

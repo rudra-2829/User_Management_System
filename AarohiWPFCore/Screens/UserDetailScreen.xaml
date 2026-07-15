@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AarohiWPFCore.Screens"
         mc:Ignorable="d"
         Title="UserDetailScreen" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterOwner">
     <Grid>
         <Border Width="700"
                 Height="400"

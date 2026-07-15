@@ -8,9 +8,7 @@
         Title="MainWindow"
         Height="450"
         Width="800"
-        WindowState="Minimized"
-        WindowStartupLocation="CenterScreen"
-        WindowStyle="None">
+        WindowStartupLocation="CenterOwner">
     <Grid>
         <Border Width="700"
                 Height="400"

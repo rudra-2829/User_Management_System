@@ -27,6 +27,8 @@ namespace AarohiWPFCore.Services
                     User user = new User();
 
                     user.Id = Convert.ToInt32(reader["Id"]);
+                    user.UserName = reader["UserName"].ToString();
+                    user.Password = reader["Password"].ToString();
                     user.FirstName = reader["FirstName"].ToString();
                     user.LastName = reader["LastName"].ToString();
                     user.EmailAddress = reader["EmailAddress"].ToString();
@@ -47,6 +49,9 @@ namespace AarohiWPFCore.Services
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Id", user.Id);
+                command.Parameters.AddWithValue("@UserName", user.UserName);
+                command.Parameters.AddWithValue("@Password", user.Password);
                 command.Parameters.AddWithValue("@FirstName", user.FirstName);
                 command.Parameters.AddWithValue("@LastName", user.LastName);
                 command.Parameters.AddWithValue("@EmailAddress", user.EmailAddress);

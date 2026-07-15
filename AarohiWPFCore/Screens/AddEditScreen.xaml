@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AarohiWPFCore.Screens"
         mc:Ignorable="d"
-        Title="AddEditScreen" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen">
+        Title="AddEditScreen" Height="450" Width="300"
+        WindowStartupLocation="CenterOwner">
     <Grid>
         <Border Width="250"
                 Height="400"
