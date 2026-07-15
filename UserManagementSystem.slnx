@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="AarohiWPFCore/AarohiWPFCore.csproj" />
+  <Project Path="UserManagementApplication/UserManagementApplication.csproj" />
+</Solution>

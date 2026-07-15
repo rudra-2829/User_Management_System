@@ -1,0 +1,28 @@
+# Visual Studio
+.vs/
+
+# Build folders
+bin/
+obj/
+
+# User files
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# ReSharper
+_ReSharper*/
+
+# NuGet
+packages/
+
+# Logs
+*.log
+
+# Publish
+publish/
+
+# Test Results
+TestResults/

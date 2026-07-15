@@ -1,0 +1,65 @@
+﻿<Window x:Class="UserManagementApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UserManagementApplication"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="450"
+        Width="800"
+        WindowState="Minimized"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+    <Grid>
+        <Border Width="700"
+                Height="400"
+                BorderBrush="DarkGoldenrod"
+                BorderThickness="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Padding="20">
+            <StackPanel>
+                <TextBlock Text="User Management System"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           Margin="0,0,0,0" />
+
+                <TextBlock Text="Manage User"
+                           FontSize="15"
+                           FontWeight="DemiBold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="0,5,0,0" />
+
+                <TextBlock Text="Users"
+                           FontSize="12"
+                           FontWeight="ExtraBold"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="10,5,0,0" />
+
+                <DataGrid x:Name="userData"
+                          Height="210"
+                          Width="650"
+                          Margin="0,10,0,0"
+                          AutoGenerateColumns="True"
+                          IsReadOnly="True"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False" />
+
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="btnManageUser"
+                            Content="Manage User"
+                            Width="120"
+                            Height="20"
+                            Margin="20,10,0,0"
+                            HorizontalAlignment="Left"
+                            Click="btnManageUser_Click" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
