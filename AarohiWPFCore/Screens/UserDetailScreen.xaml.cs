@@ -22,36 +22,5 @@ namespace AarohiWPFCore.Screens
     /// </summary>
     public partial class UserDetailScreen : Window
     {
-        public UserDetailScreen()
-        {
-            InitializeComponent();
-            LoadUser();
-        }
-
-        private void LoadUser()
-        {
-            UserServices userServices = new UserServices();
-            List<User> users = userServices.GetUsers();
-
-            userData.ItemsSource = users;
-        }
-        private void btnShow_Click(object sender, RoutedEventArgs e)
-        {
-            User selectedUser = userData.SelectedItem as User;
-            if(selectedUser == null)
-            {
-                MessageBox.Show("Please select a user to view details.", "No User Selected", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            NavigationEvent.RaiseOpenMainWindow(selectedUser);
-            this.Close();
-            this.Hide();
-        }
-
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
     }
 }

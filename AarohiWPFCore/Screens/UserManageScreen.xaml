@@ -10,7 +10,8 @@
         Height="600"
         MinWidth="800"
         MinHeight="500"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized">
 
     <Grid Background="White">
 
@@ -98,12 +99,12 @@
                     </StackPanel>
 
                     <!-- Right Button -->
-                    <Button x:Name="btnBack"
+                    <Button x:Name="btnLogout"
                             Grid.Column="1"
-                            Content="Back"
+                            Content="Logout"
                             Width="80"
                             Height="35"
-                            Click="btnBack_Click" />
+                            Click="btnLogout_Click" />
 
                 </Grid>
 
