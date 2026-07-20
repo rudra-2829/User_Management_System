@@ -6,58 +6,85 @@
         xmlns:local="clr-namespace:UserManagementApplication"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="450"
-        Width="800"
-        WindowStartupLocation="CenterOwner">
-    <Grid>
-        <Border Width="700"
-                Height="400"
-                BorderBrush="DarkGoldenrod"
+        Width="900"
+        Height="600"
+        MinWidth="800"
+        MinHeight="500"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="White">
+
+        <Border BorderBrush="DarkGoldenrod"
                 BorderThickness="1"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
+                Margin="20"
                 Padding="20">
-            <StackPanel>
-                <TextBlock Text="User Management System"
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="15" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Title -->
+                <TextBlock Grid.Row="0"
+                           Text="User Management System"
                            FontSize="20"
                            FontWeight="Bold"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Top"
-                           Margin="0,0,0,0" />
+                           HorizontalAlignment="Center" />
 
-                <TextBlock Text="Manage User"
+                <!-- Subtitle -->
+                <TextBlock Grid.Row="1"
+                           Text="Manage User"
                            FontSize="15"
-                           FontWeight="DemiBold"
+                           FontWeight="SemiBold"
                            HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,5,0,0" />
+                           Margin="0,5,0,10" />
 
-                <TextBlock Text="Users"
+                <!-- Users Label -->
+                <TextBlock Grid.Row="2"
+                           Text="Users"
                            FontSize="12"
-                           FontWeight="ExtraBold"
-                           HorizontalAlignment="Left"
-                           VerticalAlignment="Center"
-                           Margin="10,5,0,0" />
+                           FontWeight="Bold" />
 
+                <!-- DataGrid -->
                 <DataGrid x:Name="userData"
-                          Height="210"
-                          Width="650"
-                          Margin="0,10,0,0"
+                          Grid.Row="4"
+                          Margin="0,5,0,0"
                           AutoGenerateColumns="True"
                           IsReadOnly="True"
                           CanUserAddRows="False"
-                          CanUserDeleteRows="False" />
+                          CanUserDeleteRows="False"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch" />
 
-                <StackPanel Orientation="Horizontal">
+                <!-- Bottom Button -->
+                <Grid Grid.Row="6">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
                     <Button x:Name="btnManageUser"
+                            Grid.Column="0"
                             Content="Manage User"
                             Width="120"
-                            Height="20"
-                            Margin="20,10,0,0"
+                            Height="35"
                             HorizontalAlignment="Left"
                             Click="btnManageUser_Click" />
-                </StackPanel>
-            </StackPanel>
+
+                </Grid>
+
+            </Grid>
+
         </Border>
+
     </Grid>
+
 </Window>

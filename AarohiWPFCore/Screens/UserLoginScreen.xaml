@@ -5,56 +5,88 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AarohiWPFCore.Screens"
         mc:Ignorable="d"
-        Title="UserLoginScreen" Height="450" Width="350"
-        WindowState="Minimized"
-        WindowStyle="None"
-        WindowStartupLocation="CenterOwner">
-    <Grid>
-        <Border Width="300"
-                Height="400"
-                BorderBrush="DarkGray"
+        Title="User Login"
+        Width="400"
+        Height="500"
+        MinWidth="400"
+        MinHeight="500"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+
+    <Grid Background="White">
+
+        <Border BorderBrush="DarkGray"
                 BorderThickness="1"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Padding="20">
-            <StackPanel>
-                <TextBlock Text="User Management System"
+                Padding="20"
+                Margin="20"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="15" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!-- Title -->
+                <TextBlock Grid.Row="0"
+                           Text="User Management System"
                            FontSize="20"
                            FontWeight="Bold"
-                           HorizontalAlignment="Center"
-                           Margin="0,5,0,0" />
-                <TextBlock Text="User Login"
+                           HorizontalAlignment="Center" />
+
+                <!-- Subtitle -->
+                <TextBlock Grid.Row="2"
+                           Text="User Login"
                            FontSize="16"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Top" 
-                           Margin="0,30,0,0"/>
-                <TextBlock Text="Username:"
-                           Margin="80,50,0,0"
-                           HorizontalAlignment="Left"
-                           VerticalAlignment="Top" />
+                           HorizontalAlignment="Center" />
+
+                <!-- Username -->
+                <TextBlock Grid.Row="4"
+                           Text="Username:"
+                           FontWeight="SemiBold" />
+
                 <TextBox x:Name="txtUserName"
-                         Width="150"
-                         Height="20"
-                         Margin="80,0,0,0"
-                         HorizontalAlignment="Left"
-                         VerticalAlignment="Top"/>
-                <TextBlock Text="Password:"
-                           Margin="80,20,0,0"
-                           HorizontalAlignment="Left"
-                           VerticalAlignment="Top" />
+                         Grid.Row="5"
+                         Height="28"
+                         Margin="0,5,0,0"
+                         HorizontalAlignment="Stretch" />
+
+                <!-- Password -->
+                <TextBlock Grid.Row="7"
+                           Text="Password:"
+                           FontWeight="SemiBold" />
+
                 <PasswordBox x:Name="txtPassword"
-                             Width="150"
-                             Height="20"
-                             Margin="80,0,0,0"
-                             HorizontalAlignment="Left"
-                             VerticalAlignment="Top" />
-                <Button Content="Login"
-                        Width="80"
-                        Height="30"
-                        Margin="0,50,0,0"
-                        Click="btnLogin_Click"
-                        RenderTransformOrigin="0.476,0.346" />
-            </StackPanel>
+                             Grid.Row="8"
+                             Height="28"
+                             Margin="0,5,0,0"
+                             HorizontalAlignment="Stretch" />
+
+                <!-- Login Button -->
+                <Button x:Name="btnLogin"
+                        Grid.Row="10"
+                        Content="Login"
+                        Width="100"
+                        Height="35"
+                        HorizontalAlignment="Center"
+                        Click="btnLogin_Click" />
+
+            </Grid>
+
         </Border>
+
     </Grid>
+
 </Window>

@@ -39,7 +39,6 @@ namespace AarohiWPFCore.Screens
             txtLastName.Text = user.LastName;
             txtEmailAddress.Text = user.EmailAddress;
             txtUserName.Text = user.UserName;
-            txtPassword.Password = user.Password;
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -54,26 +53,28 @@ namespace AarohiWPFCore.Screens
                 }
                 User newUser = new User
                 {
+                    UserName = txtUserName.Text,
+                    Password = txtPassword.Password,
                     FirstName = txtFirstName.Text,
                     LastName = txtLastName.Text,
-                    EmailAddress = txtEmailAddress.Text,
-                    UserName = txtUserName.Text,
-                    Password = txtPassword.Password
+                    EmailAddress = txtEmailAddress.Text
                 };
                 userServices.AddUser(newUser);
             }
             else
             {
-                if (txtFirstName.Text == selectedUser.FirstName && txtLastName.Text == selectedUser.LastName && txtEmailAddress.Text == selectedUser.EmailAddress && txtUserName.Text == selectedUser.UserName && txtPassword.Password == selectedUser.Password)
+                if (txtFirstName.Text == selectedUser.FirstName && txtLastName.Text == selectedUser.LastName && txtEmailAddress.Text == selectedUser.EmailAddress && txtUserName.Text == selectedUser.UserName)
                 {
                     MessageBox.Show("Can't show any Update in User Details, Try Again");
                     return;
                 }
+
+                selectedUser.UserName = txtUserName.Text;
+                selectedUser.Password = selectedUser.Password;
                 selectedUser.FirstName = txtFirstName.Text;
                 selectedUser.LastName = txtLastName.Text;
                 selectedUser.EmailAddress = txtEmailAddress.Text;
-                selectedUser.UserName = txtUserName.Text;
-                selectedUser.Password = txtPassword.Password;
+                
                 userServices.UpdateEmployee(selectedUser);
             }
             this.Close();

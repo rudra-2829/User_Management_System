@@ -5,95 +5,166 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AarohiWPFCore.Screens"
         mc:Ignorable="d"
-        Title="AddEditScreen" Height="450" Width="300"
-        WindowStartupLocation="CenterOwner">
-    <Grid>
-        <Border Width="250"
-                Height="400"
-                BorderBrush="DarkGray"
-                BorderThickness="1">
-            <StackPanel>
-                <TextBlock Text="User Management"
-                           FontSize="18"
+        Title="Add / Edit User"
+        Width="600"
+        Height="500"
+        MinWidth="500"
+        MinHeight="450"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="White">
+
+        <Border BorderBrush="DarkGray"
+                BorderThickness="1"
+                Margin="20"
+                Padding="20"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                MaxWidth="500">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0"
+                           Text="User Management"
+                           FontSize="20"
                            FontWeight="Bold"
-                           HorizontalAlignment="Center"
-                           Margin="0,5,0,0" />
+                           HorizontalAlignment="Center" />
 
-                <TextBlock Text="User ID:"
-                           Margin="10,20,0,0"
-                           HorizontalAlignment="Left" />
-                <TextBox x:Name="txtUserId"
-                         Width="200"
-                         Height="20"
-                         Margin="10,0,0,0"
-                         HorizontalAlignment="Left"
-                         IsReadOnly="True" />
+                <!-- Form -->
+                <Grid Grid.Row="2">
 
-                <TextBlock Text="User Name:"
-                           Margin="10,10,0,0"
-                           HorizontalAlignment="Left" />
-                <TextBox x:Name="txtUserName"
-                         Width="200"
-                         Height="20"
-                         Margin="10,0,0,0"
-                         HorizontalAlignment="Left"
-                         IsReadOnly="False" />
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="200" />
+                    </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Password:"
-                           Margin="10,10,0,0"
-                           HorizontalAlignment="Left" />
-                <PasswordBox x:Name="txtPassword"
-                         Width="200"
-                         Height="20"
-                         Margin="10,0,0,0"
-                         HorizontalAlignment="Left"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-                <TextBlock Text="First Name:"
-                           Margin="10,10,0,0"
-                           HorizontalAlignment="Left" />
-                <TextBox x:Name="txtFirstName"
-                         Width="200"
-                         Height="20"
-                         Margin="10,0,0,0"
-                         HorizontalAlignment="Left"
-                         IsReadOnly="False" />
+                    <!-- User ID -->
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Text="User ID:"
+                               VerticalAlignment="Center"
+                               Margin="0,5" />
 
-                <TextBlock Text="Last Name:"
-                           Margin="10,10,0,0"
-                           HorizontalAlignment="Left" />
-                <TextBox x:Name="txtLastName"
-                         Width="200"
-                         Height="20"
-                         Margin="10,0,0,0"
-                         HorizontalAlignment="Left"
-                         IsReadOnly="False" />
+                    <TextBox x:Name="txtUserId"
+                             Grid.Row="0"
+                             Grid.Column="1"
+                             Height="28"
+                             Margin="0,5"
+                             IsReadOnly="True" />
 
-                <TextBlock Text="EmailAddress:"
-                           Margin="10,10,0,0"
-                           HorizontalAlignment="Left" />
-                <TextBox x:Name="txtEmailAddress"
-                         Width="200"
-                         Height="20"
-                         Margin="10,0,0,0"
-                         HorizontalAlignment="Left" />
-                
-                <StackPanel Orientation="Horizontal"
-                            HorizontalAlignment="Center"
-                            Margin="0,0,0,0">
+                    <!-- User Name -->
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="0"
+                               Text="User Name:"
+                               VerticalAlignment="Center"
+                               Margin="0,5" />
+
+                    <TextBox x:Name="txtUserName"
+                             Grid.Row="1"
+                             Grid.Column="1"
+                             Height="28"
+                             Margin="0,5" />
+
+                    <!-- Password -->
+                    <TextBlock Grid.Row="2"
+                               Grid.Column="0"
+                               Text="Password:"
+                               VerticalAlignment="Center"
+                               Margin="0,5" />
+
+                    <PasswordBox x:Name="txtPassword"
+                                 Grid.Row="2"
+                                 Grid.Column="1"
+                                 Height="28"
+                                 Margin="0,5" />
+
+                    <!-- First Name -->
+                    <TextBlock Grid.Row="3"
+                               Grid.Column="0"
+                               Text="First Name:"
+                               VerticalAlignment="Center"
+                               Margin="0,5" />
+
+                    <TextBox x:Name="txtFirstName"
+                             Grid.Row="3"
+                             Grid.Column="1"
+                             Height="28"
+                             Margin="0,5" />
+
+                    <!-- Last Name -->
+                    <TextBlock Grid.Row="4"
+                               Grid.Column="0"
+                               Text="Last Name:"
+                               VerticalAlignment="Center"
+                               Margin="0,5" />
+
+                    <TextBox x:Name="txtLastName"
+                             Grid.Row="4"
+                             Grid.Column="1"
+                             Height="28"
+                             Margin="0,5" />
+
+                    <!-- Email -->
+                    <TextBlock Grid.Row="5"
+                               Grid.Column="0"
+                               Text="Email Address:"
+                               VerticalAlignment="Center"
+                               Margin="0,5" />
+
+                    <TextBox x:Name="txtEmailAddress"
+                             Grid.Row="5"
+                             Grid.Column="1"
+                             Height="28"
+                             Margin="0,5" />
+
+                </Grid>
+
+                <!-- Buttons -->
+                <StackPanel Grid.Row="9"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+
                     <Button x:Name="btnSave"
                             Content="Save"
-                            Width="50"
-                            Height="30"
-                            Margin="0,20,10,0"
+                            Width="90"
+                            Height="35"
+                            Margin="0,0,10,0"
                             Click="btnSave_Click" />
+
                     <Button x:Name="btnCancel"
                             Content="Cancel"
-                            Width="50"
-                            Height="30"
-                            Margin="50,20,10,0"
+                            Width="90"
+                            Height="35"
                             Click="btnCancel_Click" />
+
                 </StackPanel>
-            </StackPanel>
+
+            </Grid>
+
         </Border>
+
     </Grid>
+
 </Window>

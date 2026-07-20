@@ -28,10 +28,24 @@ namespace AarohiWPFCore.Screens
 
         public void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            string username = txtUserName.Text;
+            string password = txtPassword.Password;
+
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                MessageBox.Show("Please enter Username");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Please enter Password");
+                return;
+            }
+
             UserServices userService = new UserServices();
 
             User? user = userService.UserLogin(
-                txtUserName.Text.Trim(),
+                txtUserName.Text,
                 txtPassword.Password);
 
             if (user != null)

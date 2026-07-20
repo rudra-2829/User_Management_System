@@ -28,7 +28,6 @@ namespace AarohiWPFCore.Services
 
                     user.Id = Convert.ToInt32(reader["Id"]);
                     user.UserName = reader["UserName"].ToString();
-                    user.Password = reader["Password"].ToString();
                     user.FirstName = reader["FirstName"].ToString();
                     user.LastName = reader["LastName"].ToString();
                     user.EmailAddress = reader["EmailAddress"].ToString();
@@ -43,7 +42,7 @@ namespace AarohiWPFCore.Services
 
         public void AddUser(User user)
         {
-            string query = @"INSERT INTO Users (FirstName, LastName, EmailAddress) VALUES (@FirstName, @LastName, @EmailAddress)";
+            string query = @"INSERT INTO Users (FirstName, LastName, EmailAddress, UserName, Password) VALUES (@FirstName, @LastName, @EmailAddress, @UserName, @Password)";
 
             using (SqlConnection connection = db.GetConnection())
             {
@@ -74,11 +73,7 @@ namespace AarohiWPFCore.Services
         public void UpdateEmployee(User user)
         {
             string query =
-                @"UPDATE Users
-          SET FirstName = @FirstName,
-                LastName = @LastName,
-              EmailAddress = @EmailAddress
-          WHERE Id = @Id";
+                @"UPDATE Users SET FirstName = @FirstName, LastName = @LastName, EmailAddress = @EmailAddress, UserName = @UserName WHERE Id = @Id";
 
             using (SqlConnection connection =
                    db.GetConnection())
@@ -89,6 +84,7 @@ namespace AarohiWPFCore.Services
                 command.Parameters.AddWithValue("@LastName", user.LastName);
                 command.Parameters.AddWithValue("@EmailAddress", user.EmailAddress);
                 command.Parameters.AddWithValue("@Id", user.Id);
+                command.Parameters.AddWithValue("@UserName", user.UserName);
 
                 Console.WriteLine("Id = " + user.Id);
                 Console.WriteLine("Parameters Count = " + command.Parameters.Count);
@@ -101,29 +97,39 @@ namespace AarohiWPFCore.Services
         public User? UserLogin(string username, string password)
         {
             User? user = null;
+
             using (SqlConnection connection = db.GetConnection())
             {
                 connection.Open();
-                string query = "SELECT * FROM Users WHERE UserName = @UserName AND Password = @Password";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@UserName", username);
-                command.Parameters.AddWithValue("@Password", password);
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
+
+                // Explicitly naming columns prevents mapping breaks if your DB changes
+                string query = "SELECT Id, UserName, FirstName, LastName, EmailAddress FROM Users WHERE UserName = @UserName AND Password = @Password";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    user = new User
+                    command.Parameters.AddWithValue("@UserName", username);
+                    command.Parameters.AddWithValue("@Password", password);
+
+                    // Added 'using' here to properly close the reader when done
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        Id = Convert.ToInt32(reader["Id"]),
-                        FirstName = reader["FirstName"].ToString(),
-                        LastName = reader["LastName"].ToString(),
-                        EmailAddress = reader["EmailAddress"].ToString(),
-                        UserName = reader["UserName"].ToString(),
-                        Password = reader["Password"].ToString(),
-                        CreatedAt = (DateTime)reader["CreatedAt"]
-                    };
+                        if (reader.Read()) // Moves the pointer to the first row found
+                        {
+                            user = new User
+                            {
+                                // Map these fields based on your exact 'User' model properties
+                                Id = Convert.ToInt32(reader["Id"]),
+                                FirstName = reader["FirstName"].ToString() ?? string.Empty,
+                                LastName = reader["LastName"].ToString() ?? string.Empty,
+                                EmailAddress = reader["EmailAddress"].ToString() ?? string.Empty,
+                                UserName = reader["UserName"].ToString() ?? string.Empty
+                            };
+                        }
+                    }
                 }
             }
-            return user;
+
+            return user; // This fixes the missing return error!
         }
     }
 }
