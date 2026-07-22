@@ -41,6 +41,30 @@ namespace AarohiWPFCore.Services
             return users;
         }
 
+        private string GetPasswordByUserId(int id)
+        {
+            string password = string.Empty;
+
+            string query = "SELECT Password FROM Users WHERE Id = @Id";
+
+            using (SqlConnection connection = db.GetConnection())
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Id", id);
+
+                object? result = command.ExecuteScalar();
+
+                if (result != null && result != DBNull.Value)
+                {
+                    password = result.ToString() ?? string.Empty;
+                }
+            }
+
+            return password;
+        }
+
         public void AddUser(User user)
         {
             //string query = @"INSERT INTO Users (FirstName, LastName, EmailAddress, UserName, Password) VALUES (@FirstName, @LastName, @EmailAddress, @UserName, @Password)";
@@ -82,26 +106,39 @@ namespace AarohiWPFCore.Services
 
         public void UpdateEmployee(User user)
         {
-            string query =
-                @"UPDATE Users SET FirstName = @FirstName, LastName = @LastName, EmailAddress = @EmailAddress, UserName = @UserName WHERE Id = @Id";
+            //string query =
+            //    @"UPDATE Users SET FirstName = @FirstName, LastName = @LastName, EmailAddress = @EmailAddress, UserName = @UserName WHERE Id = @Id";
 
-            using (SqlConnection connection =
-                   db.GetConnection())
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@FirstName", user.FirstName);
-                command.Parameters.AddWithValue("@LastName", user.LastName);
-                command.Parameters.AddWithValue("@EmailAddress", user.EmailAddress);
-                command.Parameters.AddWithValue("@Id", user.Id);
-                command.Parameters.AddWithValue("@UserName", user.UserName);
+            //using (SqlConnection connection =
+            //       db.GetConnection())
+            //{
+            //    connection.Open();
+            //    SqlCommand command = new SqlCommand(query, connection);
+            //    command.Parameters.AddWithValue("@FirstName", user.FirstName);
+            //    command.Parameters.AddWithValue("@LastName", user.LastName);
+            //    command.Parameters.AddWithValue("@EmailAddress", user.EmailAddress);
+            //    command.Parameters.AddWithValue("@Id", user.Id);
+            //    command.Parameters.AddWithValue("@UserName", user.UserName);
 
-                Console.WriteLine("Id = " + user.Id);
-                Console.WriteLine("Parameters Count = " + command.Parameters.Count);
-                Console.WriteLine(query);
+            //    Console.WriteLine("Id = " + user.Id);
+            //    Console.WriteLine("Parameters Count = " + command.Parameters.Count);
+            //    Console.WriteLine(query);
 
-                command.ExecuteNonQuery();
-            }
+            //    command.ExecuteNonQuery();
+            //}
+            DynamicClass dc = new DynamicClass("dbo", "Users", "Id");
+
+            string existingPassword = GetPasswordByUserId(user.Id);
+
+            dc.Values["Id"] = user.Id;
+            dc.Values["UserName"] = user.UserName;
+            dc.Values["Password"] = existingPassword;
+            dc.Values["FirstName"] = user.FirstName;
+            dc.Values["LastName"] = user.LastName;
+            dc.Values["EmailAddress"] = user.EmailAddress;
+
+            dc.UpdateByKey();
+
         }
 
         public User? UserLogin(string username, string password)
