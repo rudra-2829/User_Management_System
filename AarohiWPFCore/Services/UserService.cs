@@ -94,14 +94,17 @@ namespace AarohiWPFCore.Services
 
         public void DeleteUser(int userId)
         {
-            string query = @"DELETE FROM Users WHERE Id = @Id";
-            using (SqlConnection connection = db.GetConnection())
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Id", userId);
-                command.ExecuteNonQuery();
-            }
+            //string query = @"DELETE FROM Users WHERE Id = @Id";
+            //using (SqlConnection connection = db.GetConnection())
+            //{
+            //    connection.Open();
+            //    SqlCommand command = new SqlCommand(query, connection);
+            //    command.Parameters.AddWithValue("@Id", userId);
+            //    command.ExecuteNonQuery();
+            //}
+            DynamicClass dc = new DynamicClass("dbo", "Users", "Id");
+
+            dc.DeleteByKey(userId);
         }
 
         public void UpdateEmployee(User user)
