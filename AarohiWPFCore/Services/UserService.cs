@@ -4,6 +4,7 @@ using System.Text.Json;
 using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
 using System.Windows;
+using Aarohi.Classes;
 
 namespace AarohiWPFCore.Services
 {
@@ -42,20 +43,29 @@ namespace AarohiWPFCore.Services
 
         public void AddUser(User user)
         {
-            string query = @"INSERT INTO Users (FirstName, LastName, EmailAddress, UserName, Password) VALUES (@FirstName, @LastName, @EmailAddress, @UserName, @Password)";
+            //string query = @"INSERT INTO Users (FirstName, LastName, EmailAddress, UserName, Password) VALUES (@FirstName, @LastName, @EmailAddress, @UserName, @Password)";
 
-            using (SqlConnection connection = db.GetConnection())
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Id", user.Id);
-                command.Parameters.AddWithValue("@UserName", user.UserName);
-                command.Parameters.AddWithValue("@Password", user.Password);
-                command.Parameters.AddWithValue("@FirstName", user.FirstName);
-                command.Parameters.AddWithValue("@LastName", user.LastName);
-                command.Parameters.AddWithValue("@EmailAddress", user.EmailAddress);
-                command.ExecuteNonQuery();
-            }
+            //using (SqlConnection connection = db.GetConnection())
+            //{
+            //    connection.Open();
+            //    SqlCommand command = new SqlCommand(query, connection);
+            //    command.Parameters.AddWithValue("@Id", user.Id);
+            //    command.Parameters.AddWithValue("@UserName", user.UserName);
+            //    command.Parameters.AddWithValue("@Password", user.Password);
+            //    command.Parameters.AddWithValue("@FirstName", user.FirstName);
+            //    command.Parameters.AddWithValue("@LastName", user.LastName);
+            //    command.Parameters.AddWithValue("@EmailAddress", user.EmailAddress);
+            //    command.ExecuteNonQuery();
+            //}
+            DynamicClass dc = new DynamicClass("dbo","Users","Id");
+
+            dc.Values["UserName"] = user.UserName;
+            dc.Values["Password"] = user.Password;
+            dc.Values["FirstName"] = user.FirstName;
+            dc.Values["LastName"] = user.LastName;
+            dc.Values["EmailAddress"] = user.EmailAddress;
+
+            dc.Insert();
         }
 
         public void DeleteUser(int userId)

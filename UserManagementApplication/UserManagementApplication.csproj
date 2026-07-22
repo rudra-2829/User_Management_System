@@ -17,4 +17,10 @@
     <ProjectReference Include="..\AarohiWPFCore\AarohiWPFCore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Aarohi">
+      <HintPath>..\..\Aarohi-Core\Aarohi\bin\Debug\net9.0-windows\Aarohi.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

@@ -4,6 +4,10 @@ using AarohiWPFCore.Screens;
 using System.Configuration;
 using System.Data;
 using System.Windows;
+using Microsoft.Data.SqlClient;
+using System;
+using AarohiWPFCore.Services;
+using Aarohi.Classes;
 
 namespace UserManagementApplication
 {
@@ -15,6 +19,10 @@ namespace UserManagementApplication
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
+            DatabaseHelper db = new DatabaseHelper();
+
+            DynamicClass.ConnectionFactory = () => db.GetConnection();
 
             NavigationEvent.OpenMainWindowRequested += OpenMainWindow;
 
