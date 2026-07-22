@@ -98,12 +98,12 @@
                     </StackPanel>
 
                     <!-- Right Button -->
-                    <Button x:Name="btnLogout"
+                    <Button x:Name="btnBack"
                             Grid.Column="1"
-                            Content="Logout"
+                            Content="Back"
                             Width="80"
                             Height="35"
-                            Click="btnLogout_Click" />
+                            Click="btnBack_Click" />
 
                 </Grid>
 

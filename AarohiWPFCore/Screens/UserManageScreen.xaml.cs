@@ -82,8 +82,9 @@ namespace AarohiWPFCore.Screens
             }
         }
 
-        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        private void btnBack_Click(object sender, RoutedEventArgs e)
         {
+            NavigationEvent.RaiseOpenMainWindow(selectedUser);
             this.Close();
         }
     }
